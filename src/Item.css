@@ -11,18 +11,18 @@
 .layout-order-xs-10 {order: 10}
 .layout-order-xs-11 {order: 11}
 .layout-order-xs-12 {order: 12}
-.layout-size-xs-1 {flex-grow: 0; max-width: 8.3333%; flex-basis: 8.3333%}
-.layout-size-xs-2 {flex-grow: 0; max-width: 16.6666%; flex-basis: 16.6666%}
-.layout-size-xs-3 {flex-grow: 0; max-width: 25%; flex-basis: 25%}
-.layout-size-xs-4 {flex-grow: 0; max-width: 33.3333%; flex-basis: 33.3333%}
-.layout-size-xs-5 {flex-grow: 0; max-width: 41.6666%; flex-basis: 41.6666%}
-.layout-size-xs-6 {flex-grow: 0; max-width: 50%; flex-basis: 50%}
-.layout-size-xs-7 {flex-grow: 0; max-width: 58.3333%; flex-basis: 58.3333%}
-.layout-size-xs-8 {flex-grow: 0; max-width: 66.6666%; flex-basis: 66.6666%}
-.layout-size-xs-9 {flex-grow: 0; max-width: 75%; flex-basis: 75%}
-.layout-size-xs-10 {flex-grow: 0; max-width: 83.3333%; flex-basis: 83.3333%}
-.layout-size-xs-11 {flex-grow: 0; max-width: 91.6666%; flex-basis: 91.6666%}
-.layout-size-xs-12 {flex-grow: 0; max-width: 100%; flex-basis: 100%}
+.layout-size-xs-1 {flex-grow: 1}
+.layout-size-xs-2 {flex-grow: 2}
+.layout-size-xs-3 {flex-grow: 3}
+.layout-size-xs-4 {flex-grow: 4}
+.layout-size-xs-5 {flex-grow: 5}
+.layout-size-xs-6 {flex-grow: 6}
+.layout-size-xs-7 {flex-grow: 7}
+.layout-size-xs-8 {flex-grow: 8}
+.layout-size-xs-9 {flex-grow: 9}
+.layout-size-xs-10 {flex-grow: 10}
+.layout-size-xs-11 {flex-grow: 11}
+.layout-size-xs-12 {flex-grow: 12}
 
 @media (min-width: 576px){
     .layout-order-sm-0 {order: 0}
@@ -38,18 +38,18 @@
     .layout-order-sm-10 {order: 10}
     .layout-order-sm-11 {order: 11}
     .layout-order-sm-12 {order: 12}
-    .layout-size-sm-1 {flex-grow: 0; max-width: 8.3333%; flex-basis: 8.3333%}
-    .layout-size-sm-2 {flex-grow: 0; max-width: 16.6666%; flex-basis: 16.6666%}
-    .layout-size-sm-3 {flex-grow: 0; max-width: 25%; flex-basis: 25%}
-    .layout-size-sm-4 {flex-grow: 0; max-width: 33.3333%; flex-basis: 33.3333%}
-    .layout-size-sm-5 {flex-grow: 0; max-width: 41.6666%; flex-basis: 41.6666%}
-    .layout-size-sm-6 {flex-grow: 0; max-width: 50%; flex-basis: 50%}
-    .layout-size-sm-7 {flex-grow: 0; max-width: 58.3333%; flex-basis: 58.3333%}
-    .layout-size-sm-8 {flex-grow: 0; max-width: 66.6666%; flex-basis: 66.6666%}
-    .layout-size-sm-9 {flex-grow: 0; max-width: 75%; flex-basis: 75%}
-    .layout-size-sm-10 {flex-grow: 0; max-width: 83.3333%; flex-basis: 83.3333%}
-    .layout-size-sm-11 {flex-grow: 0; max-width: 91.6666%; flex-basis: 91.6666%}
-    .layout-size-sm-12 {flex-grow: 0; max-width: 100%; flex-basis: 100%}
+    .layout-size-sm-1 {flex-grow: 1}
+    .layout-size-sm-2 {flex-grow: 2}
+    .layout-size-sm-3 {flex-grow: 3}
+    .layout-size-sm-4 {flex-grow: 4}
+    .layout-size-sm-5 {flex-grow: 5}
+    .layout-size-sm-6 {flex-grow: 6}
+    .layout-size-sm-7 {flex-grow: 7}
+    .layout-size-sm-8 {flex-grow: 8}
+    .layout-size-sm-9 {flex-grow: 9}
+    .layout-size-sm-10 {flex-grow: 10}
+    .layout-size-sm-11 {flex-grow: 11}
+    .layout-size-sm-12 {flex-grow: 12}
 }
 @media (min-width: 768px){
     .layout-order-md-0 {order: 0}
@@ -65,18 +65,18 @@
     .layout-order-md-10 {order: 10}
     .layout-order-md-11 {order: 11}
     .layout-order-md-12 {order: 12}
-    .layout-size-md-1 {flex-grow: 0; max-width: 8.3333%; flex-basis: 8.3333%}
-    .layout-size-md-2 {flex-grow: 0; max-width: 16.6666%; flex-basis: 16.6666%}
-    .layout-size-md-3 {flex-grow: 0; max-width: 25%; flex-basis: 25%}
-    .layout-size-md-4 {flex-grow: 0; max-width: 33.3333%; flex-basis: 33.3333%}
-    .layout-size-md-5 {flex-grow: 0; max-width: 41.6666%; flex-basis: 41.6666%}
-    .layout-size-md-6 {flex-grow: 0; max-width: 50%; flex-basis: 50%}
-    .layout-size-md-7 {flex-grow: 0; max-width: 58.3333%; flex-basis: 58.3333%}
-    .layout-size-md-8 {flex-grow: 0; max-width: 66.6666%; flex-basis: 66.6666%}
-    .layout-size-md-9 {flex-grow: 0; max-width: 75%; flex-basis: 75%}
-    .layout-size-md-10 {flex-grow: 0; max-width: 83.3333%; flex-basis: 83.3333%}
-    .layout-size-md-11 {flex-grow: 0; max-width: 91.6666%; flex-basis: 91.6666%}
-    .layout-size-md-12 {flex-grow: 0; max-width: 100%; flex-basis: 100%}
+    .layout-size-md-1 {flex-grow: 1}
+    .layout-size-md-2 {flex-grow: 2}
+    .layout-size-md-3 {flex-grow: 3}
+    .layout-size-md-4 {flex-grow: 4}
+    .layout-size-md-5 {flex-grow: 5}
+    .layout-size-md-6 {flex-grow: 6}
+    .layout-size-md-7 {flex-grow: 7}
+    .layout-size-md-8 {flex-grow: 8}
+    .layout-size-md-9 {flex-grow: 9}
+    .layout-size-md-10 {flex-grow: 10}
+    .layout-size-md-11 {flex-grow: 11}
+    .layout-size-md-12 {flex-grow: 12}
 }
 @media (min-width: 992px){
     .layout-order-lg-0 {order: 0}
@@ -92,18 +92,18 @@
     .layout-order-lg-10 {order: 10}
     .layout-order-lg-11 {order: 11}
     .layout-order-lg-12 {order: 12}
-    .layout-size-lg-1 {flex-grow: 0; max-width: 8.3333%; flex-basis: 8.3333%}
-    .layout-size-lg-2 {flex-grow: 0; max-width: 16.6666%; flex-basis: 16.6666%}
-    .layout-size-lg-3 {flex-grow: 0; max-width: 25%; flex-basis: 25%}
-    .layout-size-lg-4 {flex-grow: 0; max-width: 33.3333%; flex-basis: 33.3333%}
-    .layout-size-lg-5 {flex-grow: 0; max-width: 41.6666%; flex-basis: 41.6666%}
-    .layout-size-lg-6 {flex-grow: 0; max-width: 50%; flex-basis: 50%}
-    .layout-size-lg-7 {flex-grow: 0; max-width: 58.3333%; flex-basis: 58.3333%}
-    .layout-size-lg-8 {flex-grow: 0; max-width: 66.6666%; flex-basis: 66.6666%}
-    .layout-size-lg-9 {flex-grow: 0; max-width: 75%; flex-basis: 75%}
-    .layout-size-lg-10 {flex-grow: 0; max-width: 83.3333%; flex-basis: 83.3333%}
-    .layout-size-lg-11 {flex-grow: 0; max-width: 91.6666%; flex-basis: 91.6666%}
-    .layout-size-lg-12 {flex-grow: 0; max-width: 100%; flex-basis: 100%}
+    .layout-size-lg-1 {flex-grow: 1}
+    .layout-size-lg-2 {flex-grow: 2}
+    .layout-size-lg-3 {flex-grow: 3}
+    .layout-size-lg-4 {flex-grow: 4}
+    .layout-size-lg-5 {flex-grow: 5}
+    .layout-size-lg-6 {flex-grow: 6}
+    .layout-size-lg-7 {flex-grow: 7}
+    .layout-size-lg-8 {flex-grow: 8}
+    .layout-size-lg-9 {flex-grow: 9}
+    .layout-size-lg-10 {flex-grow: 10}
+    .layout-size-lg-11 {flex-grow: 11}
+    .layout-size-lg-12 {flex-grow: 12}
 }
 @media (min-width: 1200px){
     .layout-order-xl-0 {order: 0}
@@ -119,16 +119,16 @@
     .layout-order-xl-10 {order: 10}
     .layout-order-xl-11 {order: 11}
     .layout-order-xl-12 {order: 12}
-    .layout-size-xl-1 {flex-grow: 0; max-width: 8.3333%; flex-basis: 8.3333%}
-    .layout-size-xl-2 {flex-grow: 0; max-width: 16.6666%; flex-basis: 16.6666%}
-    .layout-size-xl-3 {flex-grow: 0; max-width: 25%; flex-basis: 25%}
-    .layout-size-xl-4 {flex-grow: 0; max-width: 33.3333%; flex-basis: 33.3333%}
-    .layout-size-xl-5 {flex-grow: 0; max-width: 41.6666%; flex-basis: 41.6666%}
-    .layout-size-xl-6 {flex-grow: 0; max-width: 50%; flex-basis: 50%}
-    .layout-size-xl-7 {flex-grow: 0; max-width: 58.3333%; flex-basis: 58.3333%}
-    .layout-size-xl-8 {flex-grow: 0; max-width: 66.6666%; flex-basis: 66.6666%}
-    .layout-size-xl-9 {flex-grow: 0; max-width: 75%; flex-basis: 75%}
-    .layout-size-xl-10 {flex-grow: 0; max-width: 83.3333%; flex-basis: 83.3333%}
-    .layout-size-xl-11 {flex-grow: 0; max-width: 91.6666%; flex-basis: 91.6666%}
-    .layout-size-xl-12 {flex-grow: 0; max-width: 100%; flex-basis: 100%}
+    .layout-size-xl-1 {flex-grow: 1}
+    .layout-size-xl-2 {flex-grow: 2}
+    .layout-size-xl-3 {flex-grow: 3}
+    .layout-size-xl-4 {flex-grow: 4}
+    .layout-size-xl-5 {flex-grow: 5}
+    .layout-size-xl-6 {flex-grow: 6}
+    .layout-size-xl-7 {flex-grow: 7}
+    .layout-size-xl-8 {flex-grow: 8}
+    .layout-size-xl-9 {flex-grow: 9}
+    .layout-size-xl-10 {flex-grow: 10}
+    .layout-size-xl-11 {flex-grow: 11}
+    .layout-size-xl-12 {flex-grow: 12}
 }
