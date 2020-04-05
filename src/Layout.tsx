@@ -22,6 +22,7 @@ interface ItemProps {
     } | ZeroToTwelve | FlexOption,
     style?: React.CSSProperties,
     className?: string,
+    id?: string
 }
 
 function getItemClasses(size: "xs" | "sm" | "md" | "lg" | "xl", flex: FlexOption | ZeroToTwelve | undefined): string {
@@ -52,17 +53,11 @@ function getAllItemClasses(p: ItemProps): string {
     return `${p.className || ""} ${classes.join(" ")}`
 }
 export const Item: React.FunctionComponent<ItemProps> = (p) => {
-    return <div style={p.style} className={getAllItemClasses(p)}>{p.children}</div>
+    return <div id={p.id} style={p.style} className={getAllItemClasses(p)}>{p.children}</div>
 }
 
 interface ContainerProps extends ItemProps {
-    layout: {
-        xs: Layout,
-        sm?: Layout,
-        md?: Layout,
-        lg?: Layout,
-        xl?: Layout,
-    } | Layout,
+    layout: { xs: Layout, sm?: Layout, md?: Layout, lg?: Layout, xl?: Layout, } | Layout,
     wrap?: boolean,
 }
 
@@ -86,7 +81,7 @@ export const Container: React.FunctionComponent<ContainerProps> = (p) => {
         classes.push(getContainerClasses("xl", p.layout.xl));
     }
 
-    return <div className={`${classes.join(" ")} ${p.className || ''} ${getAllItemClasses(p)}`} style={p.style}>
+    return <div id={p.id} className={`${classes.join(" ")} ${p.className || ''} ${getAllItemClasses(p)}`} style={p.style}>
         {p.children}
     </div>
 }
