@@ -43,7 +43,7 @@ The breakpoints are equivalent to bootstraps breakpoints:
 ```tsx
 <Item flex={6}>...
 ```
-where the number indicates how many 1/12th width of the container should be taken, e.g. `6` means take half the width.
+where the number relates to the `flex-grow` css property, possible values are `1` to `12`.
 Again for responsive applications these can be overriden, e.g.
 ```tsx
 <Item flex={{xs: 6, sm: 5, md: 4, lg: 3, xl: 2}}>...

@@ -1,6 +1,6 @@
 {
   "name": "@quesstor/react-flex-layout",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "",
   "main": "lib/Layout.js",
   "scripts": {
