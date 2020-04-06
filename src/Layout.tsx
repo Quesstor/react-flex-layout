@@ -50,8 +50,9 @@ function getAllItemClasses(p: ItemProps): string {
     return `${p.className || ""} ${classes.join(" ")}`
 }
 export const Item: React.FunctionComponent<ItemProps> = (p) => {
-    p.className = `${getAllItemClasses(p)} ${p.className || ''}`;
-    return <div {...p} />
+    let props = { ...p, className: `${getAllItemClasses(p)} ${p.className || ''}` }
+    delete props.flex
+    return <div {...props} />
 }
 
 interface ContainerProps extends ItemProps {
@@ -78,9 +79,11 @@ export const Container: React.FunctionComponent<ContainerProps> = (p) => {
         classes.push(getContainerClasses("lg", p.layout.lg));
         classes.push(getContainerClasses("xl", p.layout.xl));
     }
-    p.className = `${classes.join(" ")} ${p.className || ''} ${getAllItemClasses(p)}`
-
-    return <div {...p} />
+    let props = { ...p, className: `${classes.join(" ")} ${p.className || ''} ${getAllItemClasses(p)}` }
+    delete props.layout
+    delete props.layoutWrap
+    delete props.flex
+    return <div {...props} />
 }
 
 type Layout =
