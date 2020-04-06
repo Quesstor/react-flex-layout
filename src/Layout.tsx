@@ -12,7 +12,7 @@ function isFlexOption(x: any): x is FlexOption {
     return 'size' in x;
 }
 
-interface ItemProps {
+interface ItemProps extends React.HTMLProps<HTMLDivElement> {
     flex?: {
         xs?: FlexOption | ZeroToTwelve,
         sm?: FlexOption | ZeroToTwelve,
@@ -20,9 +20,6 @@ interface ItemProps {
         lg?: FlexOption | ZeroToTwelve,
         xl?: FlexOption | ZeroToTwelve,
     } | ZeroToTwelve | FlexOption,
-    style?: React.CSSProperties,
-    className?: string,
-    id?: string
 }
 
 function getItemClasses(size: "xs" | "sm" | "md" | "lg" | "xl", flex: FlexOption | ZeroToTwelve | undefined): string {
@@ -53,12 +50,13 @@ function getAllItemClasses(p: ItemProps): string {
     return `${p.className || ""} ${classes.join(" ")}`
 }
 export const Item: React.FunctionComponent<ItemProps> = (p) => {
-    return <div id={p.id} style={p.style} className={getAllItemClasses(p)}>{p.children}</div>
+    p.className = `${getAllItemClasses(p)} ${p.className || ''}`;
+    return <div {...p} />
 }
 
 interface ContainerProps extends ItemProps {
     layout: { xs: Layout, sm?: Layout, md?: Layout, lg?: Layout, xl?: Layout, } | Layout,
-    wrap?: boolean,
+    layoutWrap?: boolean,
 }
 
 
@@ -70,7 +68,7 @@ function getContainerClasses(size: "xs" | "sm" | "md" | "lg" | "xl", layout: Lay
 
 export const Container: React.FunctionComponent<ContainerProps> = (p) => {
     var classes: string[] = ["layout-flex"];
-    if (p.wrap === undefined || p.wrap === true) classes.push("flex-wrap");
+    if (p.wrap === undefined || p.layoutWrap === true) classes.push("flex-wrap");
     if (typeof p.layout === "string") {
         classes.push(getContainerClasses("xs", p.layout));
     } else {
@@ -80,10 +78,9 @@ export const Container: React.FunctionComponent<ContainerProps> = (p) => {
         classes.push(getContainerClasses("lg", p.layout.lg));
         classes.push(getContainerClasses("xl", p.layout.xl));
     }
+    p.className = `${classes.join(" ")} ${p.className || ''} ${getAllItemClasses(p)}`
 
-    return <div id={p.id} className={`${classes.join(" ")} ${p.className || ''} ${getAllItemClasses(p)}`} style={p.style}>
-        {p.children}
-    </div>
+    return <div {...p} />
 }
 
 type Layout =
