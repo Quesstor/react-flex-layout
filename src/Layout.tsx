@@ -1,91 +1,39 @@
-import React from 'react';
-import "./Container.css"
-import "./Item.css"
+import cs from "./Container.module.scss"
+import hideClasses from "./Hide.module.scss"
+import is from "./Item.module.scss"
 
-type ZeroToTwelve = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+export const hide = hideClasses
+export const ItemSpacing = {
+    margin1: is.margin1,
+    margin2: is.margin2,
+    margin3: is.margin3,
+    margin4: is.margin4,
+    margin5: is.margin5,
+    margin6: is.margin6,
+    margin7: is.margin7,
+    margin8: is.margin8,
+    margin9: is.margin9,
+    margin10: is.margin10,
+    margin11: is.margin11,
+    margin12: is.margin12,
+}
 
-interface FlexOption {
+type ZeroToTwelve = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12"
+type FlexOption = {
     order?: ZeroToTwelve,
-    size: ZeroToTwelve,
+    flex?: ZeroToTwelve,
+    size?: ZeroToTwelve,
+}
+interface FlexOptions {
+    xs?: FlexOption,
+    sm?: FlexOption,
+    md?: FlexOption,
+    lg?: FlexOption,
+    xl?: FlexOption,
 }
 function isFlexOption(x: any): x is FlexOption {
-    return 'size' in x;
+    return 'order' in x || "flex" in x || "size" in x
 }
-
-interface ItemProps extends React.HTMLProps<HTMLDivElement> {
-    flex?: {
-        xs?: FlexOption | ZeroToTwelve,
-        sm?: FlexOption | ZeroToTwelve,
-        md?: FlexOption | ZeroToTwelve,
-        lg?: FlexOption | ZeroToTwelve,
-        xl?: FlexOption | ZeroToTwelve,
-    } | ZeroToTwelve | FlexOption,
-}
-
-function getItemClasses(size: "xs" | "sm" | "md" | "lg" | "xl", flex: FlexOption | ZeroToTwelve | undefined): string {
-    if (flex === undefined) return "";
-    var classes: string[] = [];
-    if (typeof flex === "number") {
-        classes.push(`layout-size-${size}-${flex}`);
-    } else {
-        classes.push(`layout-size-${size}-${flex.size}`);
-        if (flex.order !== undefined) classes.push(`layout-order-${size}-${flex.order} `);
-    }
-    return classes.join(" ");
-}
-function getAllItemClasses(p: ItemProps): string {
-    var classes: string[] = [];
-
-    if (p.flex !== undefined) {
-        if (typeof p.flex === "number" || isFlexOption(p.flex)) {
-            classes.push(getItemClasses("xs", p.flex));
-        } else {
-            classes.push(getItemClasses("xs", p.flex.xs));
-            classes.push(getItemClasses("sm", p.flex.sm));
-            classes.push(getItemClasses("md", p.flex.md));
-            classes.push(getItemClasses("lg", p.flex.lg));
-            classes.push(getItemClasses("xl", p.flex.xl));
-        }
-    }
-    return `${p.className || ""} ${classes.join(" ")}`
-}
-export const Item: React.FunctionComponent<ItemProps> = (p) => {
-    let props = { ...p, className: `${getAllItemClasses(p)} ${p.className || ''}` }
-    delete props.flex
-    return <div {...props} />
-}
-
-interface ContainerProps extends ItemProps {
-    layout: { xs: Layout, sm?: Layout, md?: Layout, lg?: Layout, xl?: Layout, } | Layout,
-    layoutWrap?: boolean,
-}
-
-
-function getContainerClasses(size: "xs" | "sm" | "md" | "lg" | "xl", layout: Layout | undefined): string {
-    if (layout === undefined) return "";
-    var [direction, justify, align] = layout.toString().split(" ");
-    return `layout-flex-${size}-${direction} layout-justify-content-${size}-${justify} layout-align-items-${size}-${align}`;
-}
-
-export const Container: React.FunctionComponent<ContainerProps> = (p) => {
-    var classes: string[] = ["layout-flex"];
-    if (p.wrap === undefined || p.layoutWrap === true) classes.push("flex-wrap");
-    if (typeof p.layout === "string") {
-        classes.push(getContainerClasses("xs", p.layout));
-    } else {
-        classes.push(getContainerClasses("xs", p.layout.xs));
-        classes.push(getContainerClasses("sm", p.layout.sm));
-        classes.push(getContainerClasses("md", p.layout.md));
-        classes.push(getContainerClasses("lg", p.layout.lg));
-        classes.push(getContainerClasses("xl", p.layout.xl));
-    }
-    let props = { ...p, className: `${classes.join(" ")} ${p.className || ''} ${getAllItemClasses(p)}` }
-    delete props.layout
-    delete props.layoutWrap
-    delete props.flex
-    return <div {...props} />
-}
-
 type Layout =
     "row start start" | "row start end" | "row start center" | "row start baseline" | "row start stretch" |
     "row end start" | "row end end" | "row end center" | "row end baseline" | "row end stretch" |
@@ -96,5 +44,56 @@ type Layout =
     "column end start" | "column end end" | "column end center" | "column end baseline" | "column end stretch" |
     "column center start" | "column center end" | "column center center" | "column center baseline" | "column center stretch" |
     "column between start" | "column between end" | "column between center" | "column between baseline" | "column between stretch" |
-    "column around start" | "column around end" | "column around center" | "column around baseline" | "column around stretch";
+    "column around start" | "column around end" | "column around center" | "column around baseline" | "column around stretch"
+
+function getItemClasses(screenSize: "xs" | "sm" | "md" | "lg" | "xl", flex?: FlexOption): string {
+    if (flex === undefined) return ""
+    var classes: string[] = []
+    if (flex.order !== undefined) classes.push(is[`layout_order_${screenSize}_${flex.order}`])
+    if (flex.size !== undefined) classes.push(is[`layout-size-${screenSize}-${flex.size}`])
+    if (flex.flex !== undefined) classes.push(is[`layout-flex-${screenSize}-${flex.flex}`])
+    return classes.join(" ")
+}
+
+export const Flex = (p: FlexOptions | FlexOption): string => {
+    var classes: string[] = []
+    if (isFlexOption(p)) {
+        classes.push(getItemClasses("xs", p))
+    } else {
+        classes.push(getItemClasses("xs", p.xs))
+        classes.push(getItemClasses("sm", p.sm))
+        classes.push(getItemClasses("md", p.md))
+        classes.push(getItemClasses("lg", p.lg))
+        classes.push(getItemClasses("xl", p.xl))
+    }
+    return classes.join(" ")
+}
+
+function getContainerClasses(size: "xs" | "sm" | "md" | "lg" | "xl", layout: Layout | undefined): string {
+    if (layout === undefined) return ""
+    var [direction, justify, align] = layout.toString().split(" ")
+    return [
+        cs[`layout-flex-${size}-${direction}`],
+        cs[`layout-justify-content-${size}-${justify}`],
+        cs[`layout-align-items-${size}-${align}`]].join(" ")
+}
+
+export const Container = (layout: Layout | { xs: Layout, sm?: Layout, md?: Layout, lg?: Layout, xl?: Layout, }, wrap?: "nowrap" | "wrap" | "wrap-reverse") => {
+    var classes: string[] = [cs["layout-flex"]]
+    classes.push(cs[`layout-${wrap || "wrap"}`])
+    if (typeof layout === "string") {
+        classes.push(getContainerClasses("xs", layout))
+    } else {
+        if (typeof layout === "string") {
+            classes.push(getContainerClasses("xs", layout))
+        } else {
+            classes.push(getContainerClasses("xs", layout.xs))
+            classes.push(getContainerClasses("sm", layout.sm))
+            classes.push(getContainerClasses("md", layout.md))
+            classes.push(getContainerClasses("lg", layout.lg))
+            classes.push(getContainerClasses("xl", layout.xl))
+        }
+    }
+    return classes.join(" ")
+}
 

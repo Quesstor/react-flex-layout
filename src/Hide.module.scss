@@ -1,0 +1,16 @@
+
+@media (max-width: 600px){
+  .xs, .sm_sm, .md_sm, .lg_sm {display: none;}
+}
+@media (min-width: 600px) and (max-width: 960px){
+  .sm, .sm_sm, .md_sm, .lg_sm, .sm_gt {display: none;}
+}
+@media (min-width: 960px) and (max-width: 1280px){
+  .md, .md_sm, .lg_sm, .sm_gt, .md_gt {display: none;}
+}
+@media (min-width: 1280px) and (max-width: 1920px){
+  .lg, .lg_sm, .sm_gt, .md_gt, .lg_gt {display: none;}
+}
+@media (min-width: 1920px){
+  .xl, .sm_gt, .md_gt, .lg_gt {display: none;}
+}

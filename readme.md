@@ -2,25 +2,29 @@
 ## Usage
 This package is written in typescript.
 
-The Layout consists of only two elements `<Container>` and `<Item>`, where the `<Container>` is an `<Item>` aswell.
+The Layout consists of only two functions `Container` and `Flex`, which generate classNames for your html elements.
 
 For more info about Flexbox in general see https://css-tricks.com/snippets/css/a-guide-to-flexbox/.
 
 ### Container
-`<Container>` takes two props: `layout` and `wrap`, eg 
+`Container` takes two arguments: `layout` and optional `wrap`, e.g.
 ```tsx
-<Container layout={"row between center"}>...
+  <div className={Container("column start stretch")}> ...
+  or
+  <div className={Container("row between center", "nowrap")}> ...
 ```
 where the layout string consist of three words: 
 - The first describing the flex-direction: `row` or `column`.
-- The second describing justify-content, where `start` and `end` will be interpreted as `flex-start` and `flex-end`
-- The third describing align-items, where `start` and `end` will be interpreted as `flex-start` and `flex-end`
+- The second describing justify-content, the layout along the main axes, where `start` and `end` will be interpreted as `flex-start` and `flex-end`.
+- The third describing align-items, where `start` and `end` will be interpreted as `flex-start` and `flex-end`.
 
 For responsive applications the layout can be changed depending on the screen resolution, e.g.
 ```tsx
-<Container layout={{ xs: "row between center", md: "column around baseline", lg: "row between start", xl: "row end center" }} >...
+<div className={Container({xs: "column start stretch", md:"row around center", lg: "row between start", xl: "row end center"})}> ...
+or
+<div className={Container({xs: "column start stretch", lg: "row between start"})}> ...
 ```
-where each size breakpoint counts for all screen sizes equal or greater itself, e.g. `md` option counts for `md` screens and above.
+where each size breakpoint is optional and counts for all screen sizes equal or greater itself, e.g. `md` option counts for `md` screens and above.
 The breakpoints are equivalent to bootstraps breakpoints:
 ```css
 // xs: Extra small devices (portrait phones, less than 576px)
@@ -39,16 +43,33 @@ The breakpoints are equivalent to bootstraps breakpoints:
 ```
 
 ### Item
-`<Item>` takes one property: `flex`, e.g. 
+
+`Flex` takes one parameter which can either describe the `flex-grow` property with `flex` or a fixed width with `size`.
+
+#### Flex Grow
+If you want the Item to compete over the remaining space in the container you can give it a `flex-grow` (see https://css-tricks.com/snippets/css/a-guide-to-flexbox/) property with
 ```tsx
-<Item flex={6}>...
+<div className={Flex({ flex: "1" })}>...</div>
 ```
-where the number relates to the `flex-grow` css property, possible values are `1` to `12`.
+Possible values are `"1"` to `"12"`.
+
+#### Fixed Width
+or a fixed width with `size`, where a `i` means `i/12`th of the Container, like the bootstrap grid system e.g.
+```tsx
+<div className={Flex({ size: "6" })}>...</div>
+```
+would take half the width of the parent container.
+Possible values are `"1"` to `"12"`.
+
+#### Responsive
 Again for responsive applications these can be overriden, e.g.
 ```tsx
-<Item flex={{xs: 6, sm: 5, md: 4, lg: 3, xl: 2}}>...
+<div className={Flex({xs: { flex: "1" }, sm: { size: "6" }, md: { size: "4" }, lg: { size: "3" }, xl: { size: "1" }})}>...</div>
 ```
+
+#### Order
+
 If the order needs to changed aswell, one can use:
 ```tsx
-<Item flex={{xs: {order: 4, size: 6}, sm: 5, md: 4, lg: 3, xl: 2}}></Item>
+<div className={Flex({ xs: { order: "4", size: "6" }, sm: { flex: "5" } })}>...</div>
 ```

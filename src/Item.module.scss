@@ -1,0 +1,42 @@
+$sizes: ("xs": 0px, "sm": 600px, "md": 960px, "lg": 1280px, "xl": 1920px);
+$maxsize: 12;
+
+@for $i from 1 through 12 {
+  .margin#{$i} {
+    margin: -$i * 4px;
+  }
+
+  .margin#{$i}>* {
+    margin: $i * 4px;
+  }
+
+  .margin#{$i}>*.margin#{$i} {
+    margin: 0
+  }
+}
+
+@each $name,
+$size in $sizes {
+  @media (min-width: #{$size}) {
+    @for $i from 1 through $maxsize {
+      .layout_order_#{$name}_#{$i} {
+        order: #{$i}
+      }
+
+      .layout-flex-#{$name}-#{$i} {
+        flex-basis: 0;
+        flex-grow: #{$i}
+      }
+
+      .layout-size-#{$name}-#{$i} {
+        width: percentage($i / $maxsize)
+      }
+
+      @for $j from 1 through 12 {
+        .margin#{$j}>*.layout-size-#{$name}-#{$i} {
+          width: calc(#{percentage($i / $maxsize)} - #{$j * 8px})
+        }
+      }
+    }
+  }
+}
