@@ -1,6 +1,6 @@
 {
   "name": "@quesstor/react-flex-layout",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "",
   "main": "lib/Layout.js",
   "scripts": {
@@ -28,10 +28,9 @@
     "rollup-plugin-scss": "^2.5.0"
   },
   "peerDependencies": {
-    "react": "^16.13.0"
+    "react": "^17.0.1"
   },
   "files": [
     "lib/**/*"
-  ],
-  "dependencies": {}
+  ]
 }
