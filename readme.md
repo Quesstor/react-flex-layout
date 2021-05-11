@@ -1,3 +1,6 @@
+# DEPRECATED
+Due to time reasons i dropped supporting this package.
+
 # React-flex-layout
 ## Usage
 This package is written in typescript.
